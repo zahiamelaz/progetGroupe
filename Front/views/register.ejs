@@ -1,0 +1,42 @@
+<%- include('./partials/headerR'); %>
+
+<div class="container">
+    <% if(locals.error) { %>
+        <div class="alert alert-danger">
+            <%- locals.error %>
+        </div>
+    <% } %>
+    <% if(locals.success) { %>
+        <div class="alert alert-success">
+            <%- locals.success %>
+            <a href="/">click ici pour te connecter</a>
+        </div>
+    <% } %>
+    <div class="col-12 mt-5">
+        <div class="col-6 login-left container">
+        </div>
+        <div class="col-6  container">            
+            <form method="POST" action="/register">
+                <div class="form-group">
+                    <label for="firstName">username:</label>
+                    <input type="text" class="form-control" name="username"  placeholder="username"><br>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email: (*)</label>
+                    <input type="text" name="email" class="form-control"  placeholder="Email" required><br>
+                </div>
+                <div class="form-group">
+                    <label for="password">Mot de passe: (*)</label>
+                    <input type="password" name="password" class="form-control"  placeholder="Mot de passe" required><br>
+                </div>
+                <button type="submit" class="btn btn-primary">Envoyer</button>
+            </form>
+            <hr>
+            <div>
+                Si vous avez deja un compte. <a href="/" class="loog">Connectez vous</a>.
+            </div>
+            <br>
+        </div>
+    </div>
+</div>
+<%- include('./partials/footer'); %>

@@ -1,0 +1,13 @@
+<%- include('./partials/header'); %>
+
+
+    <% if(locals.user){ %>
+        <div class="info">
+
+            <p>info de user avec l'Id : <%= user.id %></p>
+            <span>username :<%= user.username %></span><br>
+            <span>email : <%= user.email %>/span>
+        </div>
+    <% } %>
+
+<%- include('./partials/footer'); %>
