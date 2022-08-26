@@ -12,6 +12,7 @@ route.post('/login', userCtrl.logUser);
 
 route.get('/',(req,res)=>{res.render('home');})
 route.get('/profile',userCtrl.getUserByToken)
+route.post('/profile',userCtrl.updateUser)
 
 
 

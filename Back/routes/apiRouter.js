@@ -13,7 +13,7 @@ apiRouter.route('/login').post(userCtrl.login)
 // apiRouter.route('/logout').post(userCtrl.logout)
 apiRouter.route('/user/:id').get(userCtrl.getUser);
 apiRouter.route('/allusers').get(userCtrl.getAllUsers);
-// rouapiRouterter.route('/updateUser').put(userCtrl.updateUser);
+apiRouter.route('/updateUser').put(userCtrl.putUser);
 // apiRouter.route('/deleteUser').delete(userCtrl.deleteUser);
 
 //route message

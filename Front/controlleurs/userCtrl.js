@@ -36,7 +36,7 @@ exports.logUser = async (req, res, next) => {
         method: "POST",
         // Adding headers to the request
         headers: {
-            Accept: 'application/json',
+            "Accept": 'application/json',
             'Content-Type': 'application/json',
         },
         credentials: 'same-origin',
@@ -77,12 +77,41 @@ exports.getUserByToken = async (req, res, next) => {
         }
     });
     const myJson = await response.json();
-    console.log('----User Info---', myJson);
     res.render('profile', { user: myJson });
     
     return next();
 
 }
+exports.updateUser = async (req, res, next) => {
+    console.log('---bcdh---',req);
+    const response = await fetch('http://localhost:8080/api/updateUser', {
+       // Adding method type
+    method: "PUT",
+
+    // Adding body or contents to send
+    body: JSON.stringify({
+      username: req.body.username,
+      
+    }),
+
+    // Adding headers to the request
+    headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+      Authorization: localStorage.getItem("token"), //Token à récupérer
+    },
+  })
+    // Converting to JSON
+    .then((response) => response.json())
+
+    // Displaying results to console
+    .then((json) => {
+      res.render("profile", { user: json });
+    });
+};
+
+
+
 // exports.getAll = async (req, res) => {
 
 //     const response = await fetch('http://localhost:8080/api/allusers');
@@ -98,15 +127,3 @@ exports.getUserByToken = async (req, res, next) => {
 
 
 
-/*exports.getUserById = async (req, res) => {
-    console.log('---toto---',req.params.id)
-    const userInfo = await fetch(`http://localhost:8080/api/user/${req.params.id}`, {
-        headers: {
-            'Authorization': localStorage.getItem('token')// Token à récupérer 
-        }
-    });
-    const user = await userInfo.json();
-    console.log('----User Info---', myJson);
-    res.render('profile',user);
-
-}*/
